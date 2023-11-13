@@ -1,0 +1,182 @@
+ @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&family=Pixelify+Sans&family=Young+Serif&display=swap');
+
+@font-face {
+    font-family: "DMSerif";
+    src: url(./asset/fonts/DMSerifText-Regular.ttf);
+}
+
+/* Létoile donne du style à TOUS les éléments */
+/*    *{}     */
+body {
+    font-family: "DMSerif", Verdana;
+    background: url(./asset/img/yamato.png) center/cover;
+    /* VH = 100% de la taille de l'écrant (viewport-height) */
+    min-height: 100vh;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    /* Les tailles de polices doivent être en REM */
+    /* 1 REM = 16px */
+    font-size: 2.5rem; 
+    text-shadow: 3px 1px 0 #fcf9f9;
+    color: #a108dd;
+    font-family: "Pixelify Sans", verdana;
+}
+
+main {
+    min-height: 500px;
+    width: 90%;
+    background: rgba(214, 212, 212, 0.616);
+    /* Centré la boite */
+    margin: 0 auto;
+    border: 2px solid rgb(119, 1, 255);
+    border-radius: 20px;
+    box-shadow: 0 0 20px 8px #a507ef;
+    padding: 15px;
+}
+
+h2 {
+    margin: 0;
+}
+
+.flexbox, .grid, .absolute {
+    border: 2px solid purple;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    min-height: 150px;
+}
+
+/* Flexboox */
+/* Sert à repartir équitablement des éléments sur la page */
+
+.flexbox ul {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.flexbox li {
+    list-style: none;
+    height: 160px;
+    width: 160px;
+    margin: 10px;
+    background: rgba(211, 8, 211, 0.185);
+ /* Centrer un unique éléments, verticalement et horizontalement*/ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+.grid img {
+    width: 60%;
+    margin: 20px auto;
+    display: block;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+      "i1 i2"
+      "ta ta"
+      "vi bt";
+}
+
+input, textarea {
+    margin: 5px;
+    border: 2px solid purple;
+    padding: 10px;
+    font-size: 1.1rem;
+    font-family: "DMSerif";
+    border-radius: 5px;
+}
+
+textarea {
+    grid-area: ta;
+    height: 40px;
+    right: none;
+}
+
+#btn-submit {
+    grid-area: bt;
+    cursor: pointer;
+    background: rgba(201, 101, 201, 0.445);
+    transition: 0.2s;
+
+}
+
+#btn-submit:hover {
+    background: #8504b8;
+    color: white;
+}
+
+/* ABSOLUTE */
+/* Sans élément en Relative, de base, l'élément en absolute l'est par rapports au Body */
+/* Il faut mettre une position relative au parent pour contraindre l'élément en absolute dans ses frontières */
+
+.absolute {
+    position: relative;
+ }
+
+#circle1 {
+    height: 60px;
+    width: 60px;
+    background: rgba(189, 57, 189, 0.699);
+    position: absolute;
+    border-radius: 150px;
+    top: -20px;
+    right: -20px;
+}
+
+#circle2 {
+    height: 40px;
+    width: 40px;
+    border-radius: 150px;
+    background: rgba(131, 15, 131, 0.678);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 60px;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+    .grid-container {
+        display: block;
+    }
+    .grid-container img {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .flexbox ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+            "i1"
+            "i2"
+            "ta"
+            "bt";
+
+    }
+    input, textarea {
+        font-size: 0.8rem;
+    }
+
+}
